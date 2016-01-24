@@ -28,7 +28,7 @@ static RGB orange = RGB(0xff6000);
 
 static FadeEffect fade = FadeEffect(purple, orange, 200);
 
-static void wait_for(FadeEffect effect, long ms) {
+static void wait_for(Effect effect, long ms) {
     long t1 = millis();
     while (millis() - t1 < ms) {
         effect.tick();

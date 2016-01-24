@@ -43,8 +43,13 @@ protected:
     }
 
 public:
-    virtual void tick() = 0;
-    virtual void stop() = 0;
+    virtual void tick() {
+
+    }
+
+    virtual void stop() {
+
+    }
 
     void setColor(RGB color) {
         _setColor(color);
