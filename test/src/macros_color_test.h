@@ -6,7 +6,7 @@
 #define COLORFADER_MACROS_COLOR_TEST_H
 
 #include <RGBColor.h>
-#include <RGBPixel.h>
+#include <FadeEffect.h>
 
 #define PRINT_HEX(X,Y) printf("[%#08x] vs [%#08x]", X, Y);
 
@@ -23,15 +23,15 @@ static char    buf1[9] = "",
 
 
 
-static RGBColor purple = RGBColor(0xfe00fe);
-static RGBColor orange = RGBColor(0xff6000);
+static RGB purple = RGB(0xfe00fe);
+static RGB orange = RGB(0xff6000);
 
-static RGBPixel pixel;
+static FadeEffect fade = FadeEffect(purple, orange, 200);
 
-static void wait_for(long ms) {
+static void wait_for(FadeEffect effect, long ms) {
     long t1 = millis();
     while (millis() - t1 < ms) {
-        pixel.tick();
+        effect.tick();
     }
 }
 

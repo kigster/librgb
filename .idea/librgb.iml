@@ -3,11 +3,13 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/librgb/FadeEffect.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/librgb/RGBEffect.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/librgb/arduino-emulation.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/librgb/RGBColor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/librgb/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/librgb/RGBColor.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/librgb/RGBPixel.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/librgb/Effect.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/librgb/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/lib/googletest/googlemock/src/gmock-all.cc" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/lib/googletest/googlemock/src/gmock_main.cc" isTestSource="false" />
@@ -19,7 +21,7 @@
       <sourceFolder url="file://$MODULE_DIR$/test/lib/googletest/googletest/cmake/internal_utils.cmake" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src/rgb_color_test.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/test/src/rgb_pixel_test.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/src/fade_test.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src/macros_color_test.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src/CMakeLists.txt" isTestSource="false" />
     </content>

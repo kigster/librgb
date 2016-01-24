@@ -4,10 +4,12 @@ set(SOURCE_FILES
         arduino-emulation.h
         RGBColor.h
         RGBColor.cpp
-        RGBPixel.h)
+        RGBEffect.cpp
+        Effect.h
+        FadeEffect.h)
 
 add_library(rgb SHARED ${SOURCE_FILES})
 
 install(TARGETS rgb DESTINATION lib)
 install(FILES RGBColor.h DESTINATION include)
-install(FILES RGBPixel.h DESTINATION include)
+install(FILES FadeEffect.h DESTINATION include)
