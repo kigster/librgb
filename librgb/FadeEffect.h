@@ -22,14 +22,19 @@ public:
                RGB to,
                long periodMs) {
 
+        restart(from, to, periodMs);
+    };
+
+    void restart(RGB from,
+                   RGB to,
+                   long periodMs) {
         stop();
         _startColor    = from;
         _endColor      = to;
         _fadeStartedAt = millis();
         _periodMs      = periodMs;
         _setColor(_startColor);
-
-    };
+    }
 
     void tick() {
         long _now = millis();
