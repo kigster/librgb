@@ -4,7 +4,6 @@ set(SOURCE_FILES
         arduino-emulation.h
         RGBColor.h
         RGBColor.cpp
-        RGBEffect.cpp
         Effect.h
         FadeEffect.h)
 
