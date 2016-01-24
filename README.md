@@ -1,5 +1,7 @@
 # librgb – C/C++ Library for RGB color manipulation
 
+![build status](https://travis-ci.org/kigster/librgb.svg?branch=master)
+
 ## Building It
 
 ```bash
