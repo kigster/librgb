@@ -1,6 +1,6 @@
 # librgb – C/C++ Library for RGB color manipulation
 
-![build status](https://travis-ci.org/kigster/librgb.svg?branch=master)
+[![build status](https://travis-ci.org/kigster/librgb.svg?branch=master)](https://travis-ci.org/kigster/librgb)
 
 ## Building It
 
