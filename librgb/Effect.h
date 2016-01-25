@@ -8,12 +8,7 @@
 #include <cctype>
 
 #include "RGBColor.h"
-
-typedef enum RGBOverTimeMode_e {
-    Normal = (1 << 0),
-    Blinking = (1 << 1),
-    Fading = (1 << 2),
-} RGBOverTimeMode;
+#include "arduino-emulation.h"
 
 /**
  * Abstract Class Effect
@@ -21,65 +16,108 @@ typedef enum RGBOverTimeMode_e {
 
 class Effect {
 
-    bool _enabled = true;
+    bool     _enabled = true;
+    bool     _running = false;
 
-    void _setColor(rgb_color_t color) {
-        _color = RGB(color);
-    }
-
-    void _off() {
-        _color.r = 0;
-        _color.g = 0;
-        _color.b = 0;
-    }
 
 protected:
-    RGB _color = RGB();
+    RGB _color             = RGB();
+    RGB _endColor          = RGB(),
+        _startColor        = RGB();
     uint32_t _lastUpdateAt = 0;
-    RGBOverTimeMode _mode = Normal;
-
-    void _setColor(RGB color) {
-        _color = color;
-    }
-
+    uint32_t _startTime    = 0;
+    uint32_t _duration     = 0;
 public:
     virtual void tick() {
 
     }
 
     virtual void stop() {
-
-    }
-
-    void setColor(RGB color) {
-        _setColor(color);
-    } RGB getColor() {
-        return _color;
+        off();
+        _running = false;
     }
 
     void off() {
-        stop();
+        _color.r = 0;
+        _color.g = 0;
+        _color.b = 0;
     }
 
-    bool isEnabled() {
+    void toString(char *buffer,
+                  int length) {
+        char buf[9];
+        sprintf(buf, "%#08x", _color.getValue());
+        strncpy(buffer, (const char *) buf, length);
+    }
+
+    /**
+     * Returns a float between 0 and 1 representing how far into the effect
+     * we are in based on the start timing and duration, and the timestamp passed.
+     */
+    float progressAt(uint32_t timestamp) const {
+        return timestamp > _startTime + _duration ?
+               1.0f :
+               (timestamp - _startTime) / (float)_duration;
+    }
+
+    float progress() const {
+        return progressAt(millis());
+    }
+
+    //-----------------------------------------------------------------------------------------
+
+    bool is_enabled() const {
         return _enabled;
+    }
+
+    void set_enabled(bool _enabled) {
+        Effect::_enabled = _enabled;
+    }
+
+    bool is_running() const {
+        return _running;
+    }
+
+    void set_running(bool _running) {
+        Effect::_running = _running;
+    }
+
+    const RGBColor &get_color() const {
+        return _color;
+    }
+
+    void set_color(const RGBColor &_color) {
+        Effect::_color = _color;
+    }
+
+    uint32_t get_lastUpdateAt() const {
+        return _lastUpdateAt;
+    }
+
+    void set_lastUpdateAt(uint32_t _lastUpdateAt) {
+        Effect::_lastUpdateAt = _lastUpdateAt;
     }
 
     void toggleEnabled() {
         _enabled = !_enabled;
     }
-
-    void enabled(bool enable) {
-        _enabled = enable;
+    uint32_t get_duration() const {
+        return _duration;
     }
 
-    void enable() {
-        _enabled = true;
+    const RGBColor &get_endColor() const {
+        return _endColor;
     }
 
-    void disable() {
-        _enabled = false;
+    const RGBColor &get_startColor() const {
+        return _startColor;
     }
+
+    uint32_t get_startTime() const {
+        return _startTime;
+    }
+
+
 };
 
 
