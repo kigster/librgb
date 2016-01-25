@@ -25,7 +25,7 @@
     A simple but perhaps not very efficient RGB color manipulation implemention
     allowing basic arithmetic with 3-valued colors, for example:
 
-    RGB(0xFF0022) + RGB(0x101010) = RGB(0xFF2031) # so each
+    RGB(0xFF0022) + RGB(0x101010) = RGB(0xFF2032) # so each
  */
 
 
