@@ -64,4 +64,8 @@ static int arduino_main() {
 
 
 #endif //_ARDUINO_EMULATION_H
+#else
+
+#include <Arduino.h>
+
 #endif // ARDUINO
