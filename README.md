@@ -14,7 +14,7 @@
 
 This produces three artifacts:
 
- * ./test/src/runColorFaderTests (Google Tests which you can run)
- * ./ColorFader_run (Example using the library)
- * ./librgb/librgb.dylib (shared library)
+ * `./test/src/runColorFaderTests` (Google Tests which you can run)
+ * `./ColorFader_run` (Example using the library)
+ * `./librgb/librgb.dylib` (shared library)
 
