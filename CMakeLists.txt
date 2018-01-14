@@ -1,13 +1,23 @@
-cmake_minimum_required(VERSION 2.8.7)
-project(ColorFader C CXX)
+#=============================================================================#
+# Author: Konstantin Gredeskoul https://github.com/kigster                    #
+# © 2017 All rights reserved, MIT License                                     #
+#                                                                             #
+# Description: Arduino CMake Top Level file that uses Arli Library Manager    #
+# https://github.com/kigster/arli                                             #
+#                                                                             #
+# Depends on Arduino-CMake project found at                                   #
+# https://github.com/arduino-cmake/arduino-cmake                              #
+#                                                                             #
+#=============================================================================#
 
+set(CMAKE_C_COMPILER "gcc-7")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+#set(CMAKE_MACOSX_RPATH 1)
 
-set(SOURCE_FILES main.cpp)
-add_executable(ColorFader_run  ${SOURCE_FILES})
+cmake_minimum_required(VERSION 3.0)
 
-include_directories(librgb)
-add_subdirectory(librgb)
+project(librgb C CXX)
+
+add_subdirectory(src)
 add_subdirectory(test)
 
-target_link_libraries(ColorFader_run rgb)

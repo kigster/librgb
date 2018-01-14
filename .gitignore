@@ -39,5 +39,5 @@
 *.exe
 *.out
 *.app
-
+**/run*
 *.cbp

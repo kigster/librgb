@@ -1,5 +1,7 @@
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-add_executable(runColorFaderTests fade_test.cpp rgb_color_test.cpp macros_color_test.h)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/src/librgb)
+set(CMAKE_INSTALL_RPATH ${PROJECT_SOURCE_DIR})
 
-target_link_libraries(runColorFaderTests gtest gtest_main)
-target_link_libraries(runColorFaderTests rgb)
+add_executable(runTests fade_test.cpp rgb_color_test.cpp macros_color_test.h)
+
+target_link_libraries(runTests gtest gtest_main)
+target_link_libraries(runTests rgb)

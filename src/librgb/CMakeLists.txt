@@ -1,5 +1,6 @@
-cmake_minimum_required(VERSION 2.8.7)
-project(librgb C CXX)
+set(CMAKE_BINARY_DIR ${CMAKE_ROOT}/build)
+set(PROJECT_BINARY_DIR ${CMAKE_ROOT}/build)
+
 set(SOURCE_FILES
         arduino-emulation.h
         RGBColor.h
