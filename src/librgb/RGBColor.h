@@ -42,7 +42,7 @@ typedef uint32_t rgb_color_t;
 
 // 0 <= X,Y <= 255
 // 0 <=   f <= 1.0
-#define converge(   X, Y, f)   (color_t)(Y*f + (1 - f)*X)
+#define converge(   X, Y, f)   (color_t)(Y >= X ? X + f * (Y - X) : X - f * (X - Y) )
 #define MOD_minus(  X, Y)      (color_t)(X >= Y ? X - Y : 0)
 #define MOD_plus(   X, Y)      (color_t)((((int)X + (int)Y)) > 255 ? 255 : ((int)X + (int)Y))
 
@@ -134,12 +134,12 @@ public:
                 const float ratio)const {
         return RGB(
                 converge(r, other.r, ratio),
-                converge(r, other.g, ratio),
-                converge(r, other.b, ratio)
+                converge(g, other.g, ratio),
+                converge(b, other.b, ratio)
         );
     }
 
-    RGB operator/(const int f) {
+    RGB operator/(const float f) {
         return RGB((color_t) (r / f),
                    (color_t) (g / f),
                    (color_t) (b / f));

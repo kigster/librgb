@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "macros_color_test.h"
+#include "test_macros.h"
 
 TEST(rgb_color, assignment) {
     RGB c = purple;
@@ -32,4 +32,25 @@ TEST(rgb_color, minus_equals) {
     RGB c  = RGB(0xFF00FF);
     c -= RGB(0x020305);
     EXPECT_EQ_COLORS(c, RGB(0xFD00FA));
+}
+
+TEST(rgb_color, scaleTo) {
+    RGB r1  = RGB(0xF0A020);
+    RGB r2  = RGB(0xD08010);
+    EXPECT_EQ_COLORS(r1.scaleTo(r2, 0.5), RGB(0xE09018));
+    EXPECT_EQ_COLORS(r2.scaleTo(r1, 0.5), RGB(0xE09018));
+
+    EXPECT_EQ_COLORS(r1.scaleTo(r2, 1), r2);
+    EXPECT_EQ_COLORS(r2.scaleTo(r1, 1), r1);
+}
+
+TEST(rgb_color, converge) {
+    color_t r1 = 200;
+    color_t r2 = 120;
+
+    EXPECT_EQ(160, converge(r1, r2, 0.5));
+    EXPECT_EQ(140, converge(r1, r2, 0.75));
+
+    EXPECT_EQ(180, converge(r2, r1, 0.75));
+    EXPECT_EQ(199, converge(r2, r1, 0.99));
 }

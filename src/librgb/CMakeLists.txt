@@ -1,5 +1,7 @@
-set(CMAKE_BINARY_DIR ${CMAKE_ROOT}/build)
-set(PROJECT_BINARY_DIR ${CMAKE_ROOT}/build)
+cmake_minimum_required(VERSION 3.0)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+project(rgb CXX)
 
 set(SOURCE_FILES
         arduino-emulation.h
@@ -8,7 +10,7 @@ set(SOURCE_FILES
         Effect.h
         FadeEffect.h)
 
-add_library(rgb SHARED ${SOURCE_FILES})
+add_library(rgb SHARED ${SOURCE_FILES} )
 
 install(TARGETS rgb DESTINATION lib)
 install(FILES RGBColor.h DESTINATION include)

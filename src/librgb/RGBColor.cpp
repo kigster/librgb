@@ -1,1 +1,4 @@
-// Empty
+// empty
+
+#include "RGBColor.h"
+

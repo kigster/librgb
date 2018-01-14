@@ -27,8 +27,9 @@ protected:
     uint32_t _lastUpdateAt = 0;
     uint32_t _startTime    = 0;
     uint32_t _duration     = 0;
+
 public:
-    virtual void tick() {
+    virtual void tick(long timestamp) {
 
     }
 
@@ -57,7 +58,7 @@ public:
     float progressAt(uint32_t timestamp) const {
         return timestamp > _startTime + _duration ?
                1.0f :
-               (timestamp - _startTime) / (float)_duration;
+               (float) (timestamp - _startTime) / (float)_duration;
     }
 
     float progress() const {
@@ -117,6 +118,9 @@ public:
         return _startTime;
     }
 
+    uint32_t get_endTime() const {
+        return _startTime + _duration;
+    }
 
 };
 

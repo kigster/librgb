@@ -24,16 +24,17 @@ public:
                  uint32_t periodMs) {
         stop();
         _startColor = from;
-        _endColor   = to;
-        _startTime  = millis();
-        _duration   = periodMs;
+        _endColor = to;
+        _startTime = millis();
+        _duration = periodMs;
         set_color(_startColor);
         set_running(true);
     }
 
 
-    void tick() {
-        long _now = millis();
+    void tick(long timestamp) {
+        long _now = timestamp == 0 ? millis() : timestamp;
+
         if (_now - _startTime > _duration) {
             set_color(_endColor);
         } else {
@@ -44,13 +45,13 @@ public:
     }
 
     RGBColor _colorAt(long timestamp) const {
-        return _startColor.scaleTo(_endColor, progressAt(timestamp));;
+        return _startColor.scaleTo(_endColor, progressAt(timestamp));
     }
 
 
     void stop() {
-        _startColor   = _endColor = RGB(0);
-        _duration     = 0;
+        _startColor = _endColor = RGB(0);
+        _duration = 0;
         _lastUpdateAt = 0;
         set_running(false);
     }
