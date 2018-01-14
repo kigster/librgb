@@ -3,10 +3,10 @@
 **/CMakeFiles
 **/*.cmake
 **/Makefile
-
+**/.DS_Store
 **/ColorFader_run
 **/runColorFaderTests
-
+.idea
 **/*.swp
 
 **/.idea/workspace.xml 
@@ -39,3 +39,5 @@
 *.exe
 *.out
 *.app
+
+*.cbp
